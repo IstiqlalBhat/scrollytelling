@@ -19,9 +19,9 @@ export default function Home() {
           Visit Istiqlal Café and taste the passion behind every slice.
         </p>
         <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto px-4 sm:px-0">
-          <button className="rounded-full bg-orange-600 px-6 sm:px-8 py-3 sm:py-4 font-semibold text-white shadow-lg shadow-orange-600/20 transition-all duration-300 hover:bg-orange-500 hover:scale-105 hover:shadow-xl hover:shadow-orange-500/30 active:scale-95">
+          <a href="https://fullcirclecafes.com/" target="_blank" rel="noopener noreferrer" className="rounded-full bg-orange-600 px-6 sm:px-8 py-3 sm:py-4 font-semibold text-white shadow-lg shadow-orange-600/20 transition-all duration-300 hover:bg-orange-500 hover:scale-105 hover:shadow-xl hover:shadow-orange-500/30 active:scale-95 text-center">
             Order Online
-          </button>
+          </a>
           <button className="rounded-full border border-neutral-600 px-6 sm:px-8 py-3 sm:py-4 font-semibold text-neutral-200 transition-all duration-300 hover:border-neutral-400 hover:bg-neutral-800 active:scale-95">
             Find a Location
           </button>

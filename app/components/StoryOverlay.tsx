@@ -106,9 +106,9 @@ export default function StoryOverlay() {
                     >
                         Taste the Difference.
                     </h2>
-                    <button className="pointer-events-auto mt-6 sm:mt-8 rounded-full bg-orange-600 px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold text-white shadow-lg shadow-orange-600/30 transition-all duration-300 hover:bg-orange-500 hover:scale-105 hover:shadow-xl hover:shadow-orange-500/40 active:scale-95">
+                    <a href="https://fullcirclecafes.com/" target="_blank" rel="noopener noreferrer" className="pointer-events-auto mt-6 sm:mt-8 rounded-full bg-orange-600 px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold text-white shadow-lg shadow-orange-600/30 transition-all duration-300 hover:bg-orange-500 hover:scale-105 hover:shadow-xl hover:shadow-orange-500/40 active:scale-95">
                         Order Now
-                    </button>
+                    </a>
                 </div>
             </motion.div>
 
