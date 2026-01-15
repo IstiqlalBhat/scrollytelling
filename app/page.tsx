@@ -18,7 +18,7 @@ export default function Home() {
       </AnimatePresence>
 
       {/* Scrollytelling Section - contained experience */}
-      <section className="relative h-[320vh]">
+      <section className="relative h-[500vh]">
         <PizzaScroll />
         <StoryOverlay />
       </section>
