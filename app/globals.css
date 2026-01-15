@@ -18,8 +18,8 @@
 }
 
 :root {
-  --background: #FDF8F3;
-  --foreground: #2D2420;
+  --background: #2D2420;
+  --foreground: #FDF8F3;
 }
 
 body {
@@ -36,7 +36,7 @@ body {
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--color-cream-dark);
+  background: var(--color-espresso);
 }
 
 ::-webkit-scrollbar-thumb {
