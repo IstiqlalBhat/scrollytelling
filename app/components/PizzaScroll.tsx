@@ -3,7 +3,7 @@
 import { useScroll, useTransform, useMotionValueEvent } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
-const FRAME_COUNT = 192;
+const FRAME_COUNT = 120;
 
 export default function PizzaScroll() {
     const canvasRef = useRef<HTMLCanvasElement>(null);
