@@ -31,7 +31,10 @@ export default function StoryOverlay() {
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: 0.2, duration: 0.8 }}
-                        className="font-body mb-6 inline-block rounded-full border border-[#D4A574]/30 bg-black/40 px-5 py-2 text-sm font-medium tracking-[0.3em] text-[#D4A574] backdrop-blur-sm sm:px-6 sm:py-2.5 sm:text-base"
+                        className="font-body mb-6 text-base font-semibold tracking-[0.3em] text-white sm:text-lg"
+                        style={{
+                            textShadow: "0 0 20px rgba(212, 165, 116, 0.9), 0 0 40px rgba(212, 165, 116, 0.6), 0 0 60px rgba(199, 93, 58, 0.4), 0 2px 4px rgba(0,0,0,0.8)"
+                        }}
                     >
                         FULL CIRCLE CAFE
                     </motion.p>
@@ -110,7 +113,10 @@ export default function StoryOverlay() {
             >
                 <div className="flex flex-col items-center">
                     <p
-                        className="font-body mb-6 inline-block rounded-full border border-[#D4A574]/30 bg-black/40 px-5 py-2 text-sm font-medium tracking-[0.25em] text-[#D4A574] backdrop-blur-sm sm:px-6 sm:py-2.5 sm:text-base"
+                        className="font-body mb-6 text-base font-semibold tracking-[0.25em] text-white sm:text-lg"
+                        style={{
+                            textShadow: "0 0 20px rgba(212, 165, 116, 0.9), 0 0 40px rgba(212, 165, 116, 0.6), 0 0 60px rgba(199, 93, 58, 0.4), 0 2px 4px rgba(0,0,0,0.8)"
+                        }}
                     >
                         EXPERIENCE THE DIFFERENCE
                     </p>
