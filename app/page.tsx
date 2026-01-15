@@ -29,7 +29,7 @@ export default function Home() {
           Ready to Experience<br />Wood-Fired Magic?
         </h2>
         <p className="mt-4 sm:mt-6 max-w-sm sm:max-w-md text-base sm:text-lg text-neutral-400 leading-relaxed">
-          Visit Istiqlal Café and taste the passion behind every slice.
+          Visit Full Circle Cafe and taste the passion behind every slice.
         </p>
         <div className="mt-8 sm:mt-10 flex flex-col sm:flex-row gap-3 sm:gap-4 w-full sm:w-auto px-4 sm:px-0">
           <a href="https://fullcirclecafes.com/" target="_blank" rel="noopener noreferrer" className="rounded-full bg-orange-600 px-6 sm:px-8 py-3 sm:py-4 font-semibold text-white shadow-lg shadow-orange-600/20 transition-all duration-300 hover:bg-orange-500 hover:scale-105 hover:shadow-xl hover:shadow-orange-500/30 active:scale-95 text-center">
@@ -40,7 +40,7 @@ export default function Home() {
           </button>
         </div>
         <p className="mt-16 sm:mt-20 text-xs sm:text-sm text-neutral-600">
-          © 2026 Istiqlal Café. All rights reserved.
+          © 2026 Full Circle Cafe. All rights reserved.
         </p>
       </footer>
     </>

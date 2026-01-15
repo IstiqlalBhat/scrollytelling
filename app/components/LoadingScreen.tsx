@@ -40,7 +40,7 @@ export default function LoadingScreen({ onLoadComplete }: LoadingScreenProps) {
                 transition={{ duration: 0.6 }}
                 className="mb-12 text-3xl font-bold tracking-tight text-white sm:text-4xl"
             >
-                Istiqlal Café
+                Full Circle Cafe
             </motion.h1>
 
             {/* Pizza Slice Dots */}

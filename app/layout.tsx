@@ -10,8 +10,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Istiqlal Café | Wood-Fired Perfection",
-  description: "Experience the art of wood-fired pizza at Istiqlal Café.",
+  title: "Full Circle Cafe | Wood-Fired Perfection",
+  description: "Experience the art of wood-fired pizza at Full Circle Cafe.",
 };
 
 export default function RootLayout({

@@ -1,36 +1,83 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Full Circle Cafe - Scrollytelling Website
+
+A stunning, scroll-driven animated website for Full Circle Cafe featuring wood-fired pizza. Built with Next.js 16, Framer Motion, and Tailwind CSS.
+
+## Features
+
+- **Scroll-driven Animation**: 192-frame pizza animation that plays as users scroll
+- **Smooth Loading Screen**: Animated pizza slice loader with progress indicator
+- **Responsive Design**: Optimized for phones, tablets, and desktops
+- **Modern UI**: Clean typography with smooth transitions and hover effects
+- **Performance Optimized**: Canvas-based rendering for smooth 60fps animations
+
+## Tech Stack
+
+- **Framework**: Next.js 16 (App Router)
+- **Styling**: Tailwind CSS
+- **Animations**: Framer Motion
+- **Language**: TypeScript
 
 ## Getting Started
 
-First, run the development server:
+### Prerequisites
 
+- Node.js 18+
+- npm or yarn
+
+### Installation
+
+1. Clone the repository:
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+git clone https://github.com/IstiqlalBhat/scrollytelling.git
+cd scrollytelling
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+2. Install dependencies:
+```bash
+npm install
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+3. Run the development server:
+```bash
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+4. Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-## Learn More
+## Project Structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+├── app/
+│   ├── components/
+│   │   ├── LoadingScreen.tsx   # Animated loading screen
+│   │   ├── PizzaScroll.tsx     # Scroll-driven canvas animation
+│   │   └── StoryOverlay.tsx    # Text overlays with scroll effects
+│   ├── globals.css             # Global styles
+│   ├── layout.tsx              # Root layout
+│   └── page.tsx                # Main page
+├── public/
+│   └── images/                 # 192 animation frames
+└── package.json
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## How It Works
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. **Loading Screen**: Shows animated pizza slices while assets load
+2. **Scrollytelling**: As users scroll through the 500vh section, the pizza animation plays frame-by-frame
+3. **Text Overlays**: Story sections fade in/out at different scroll positions
+4. **Footer**: Call-to-action section with order links
 
-## Deploy on Vercel
+## Customization
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Animation Frames**: Replace images in `public/images/` (named `ezgif-frame-001.jpg` to `ezgif-frame-192.jpg`)
+- **Colors**: Modify the orange theme in component files
+- **Text Content**: Edit `StoryOverlay.tsx` and `page.tsx`
+- **Links**: Update the order link in `StoryOverlay.tsx` and `page.tsx`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## License
+
+MIT
+
+## Links
+
+- **Live Site**: [Full Circle Cafes](https://fullcirclecafes.com/)
