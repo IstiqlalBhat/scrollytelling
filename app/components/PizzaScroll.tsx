@@ -8,7 +8,6 @@ const FRAME_COUNT = 192;
 export default function PizzaScroll() {
     const canvasRef = useRef<HTMLCanvasElement>(null);
     const [images, setImages] = useState<HTMLImageElement[]>([]);
-    const [loadingProgress, setLoadingProgress] = useState(0);
     const { scrollYProgress } = useScroll();
 
     const currentIndex = useTransform(scrollYProgress, [0, 1], [0, FRAME_COUNT - 1]);
@@ -25,8 +24,6 @@ export default function PizzaScroll() {
             img.onload = () => {
                 imageArray[i] = img;
                 loadedCount++;
-                setLoadingProgress(Math.round((loadedCount / FRAME_COUNT) * 100));
-
                 if (loadedCount === FRAME_COUNT) {
                     setImages([...imageArray]);
                 }
@@ -132,16 +129,6 @@ export default function PizzaScroll() {
 
     return (
         <div className="fixed inset-0 z-0 h-screen w-full bg-[#1a1a1a]">
-            {!imagesLoaded && (
-                <div className="absolute inset-0 z-10 flex items-center justify-center bg-[#1a1a1a] text-neutral-400">
-                    <div className="flex flex-col items-center gap-3">
-                        <div className="h-10 w-10 animate-spin rounded-full border-2 border-orange-500/20 border-t-orange-500"></div>
-                        <span className="text-sm font-medium tracking-widest uppercase">
-                            Loading... {loadingProgress}%
-                        </span>
-                    </div>
-                </div>
-            )}
             <canvas
                 ref={canvasRef}
                 className="absolute inset-0 block"
