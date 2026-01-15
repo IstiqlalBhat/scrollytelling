@@ -6,58 +6,67 @@ export default function StoryOverlay() {
     const { scrollYProgress } = useScroll();
 
     // Opacity transforms for each section
-    // 0% -> Block 1
     const opacity1 = useTransform(scrollYProgress, [0, 0.15, 0.25], [1, 1, 0]);
     const y1 = useTransform(scrollYProgress, [0, 0.2], [0, -50]);
 
-    // 30% -> Block 2
     const opacity2 = useTransform(scrollYProgress, [0.2, 0.3, 0.4, 0.5], [0, 1, 1, 0]);
     const x2 = useTransform(scrollYProgress, [0.2, 0.3], [-50, 0]);
 
-    // 60% -> Block 3
     const opacity3 = useTransform(scrollYProgress, [0.5, 0.6, 0.7, 0.8], [0, 1, 1, 0]);
     const x3 = useTransform(scrollYProgress, [0.5, 0.6], [50, 0]);
 
-    // 90% -> Block 4
     const opacity4 = useTransform(scrollYProgress, [0.8, 0.9, 1], [0, 1, 1]);
     const scale4 = useTransform(scrollYProgress, [0.8, 1], [0.9, 1]);
 
     return (
         <div className="pointer-events-none fixed inset-0 z-20 flex h-screen w-full flex-col justify-center px-4 sm:px-6 md:px-12 lg:px-20">
 
-            {/* Section 1: 0% - Hero */}
+            {/* Section 1: Hero */}
             <motion.div
                 style={{ opacity: opacity1, y: y1 }}
-                className="absolute inset-0 flex items-center justify-center text-center px-4"
+                className="absolute inset-0 flex items-center justify-center px-4 text-center"
             >
-                <h1
-                    className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold tracking-tight text-white"
-                    style={{
-                        textShadow: "0 4px 30px rgba(0,0,0,0.8), 0 2px 10px rgba(0,0,0,0.9)"
-                    }}
-                >
-                    Wood-Fired<br />Perfection.
-                </h1>
+                <div>
+                    <motion.p
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.2, duration: 0.8 }}
+                        className="font-body mb-6 inline-block rounded-full border border-[#D4A574]/30 bg-black/40 px-5 py-2 text-sm font-medium tracking-[0.3em] text-[#D4A574] backdrop-blur-sm sm:px-6 sm:py-2.5 sm:text-base"
+                    >
+                        FULL CIRCLE CAFE
+                    </motion.p>
+                    <h1
+                        className="font-display text-5xl font-medium italic leading-[1.1] tracking-tight text-white sm:text-6xl md:text-7xl lg:text-8xl"
+                        style={{
+                            textShadow: "0 4px 20px rgba(0,0,0,0.6), 0 8px 40px rgba(0,0,0,0.4)"
+                        }}
+                    >
+                        Wood-Fired<br />
+                        <span className="not-italic">Perfection.</span>
+                    </h1>
+                </div>
             </motion.div>
 
-            {/* Section 2: 30% - Left aligned */}
+            {/* Section 2: Left aligned */}
             <motion.div
                 style={{ opacity: opacity2, x: x2 }}
                 className="absolute left-0 flex h-full w-full items-center justify-start px-6 sm:px-10 md:px-16 lg:px-32"
             >
                 <div className="max-w-xs sm:max-w-sm md:max-w-lg">
+                    {/* Decorative line */}
+                    <div className="mb-6 h-[2px] w-16 bg-gradient-to-r from-[#D4A574] to-transparent" />
                     <h2
-                        className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-white"
+                        className="font-display text-3xl font-medium italic text-white sm:text-4xl md:text-5xl lg:text-6xl"
                         style={{
-                            textShadow: "0 4px 30px rgba(0,0,0,0.8), 0 2px 10px rgba(0,0,0,0.9)"
+                            textShadow: "0 4px 20px rgba(0,0,0,0.6), 0 8px 40px rgba(0,0,0,0.4)"
                         }}
                     >
                         Handcrafted Daily.
                     </h2>
                     <p
-                        className="mt-3 sm:mt-4 text-base sm:text-lg md:text-xl text-neutral-200 leading-relaxed"
+                        className="font-body mt-4 text-base font-normal leading-relaxed text-white/90 sm:mt-5 sm:text-lg md:text-xl"
                         style={{
-                            textShadow: "0 2px 15px rgba(0,0,0,0.9)"
+                            textShadow: "0 2px 12px rgba(0,0,0,0.7)"
                         }}
                     >
                         Dough fermented for 48 hours. San Marzano tomatoes.
@@ -66,24 +75,26 @@ export default function StoryOverlay() {
                 </div>
             </motion.div>
 
-            {/* Section 3: 60% - Right aligned */}
+            {/* Section 3: Right aligned */}
             <motion.div
                 style={{ opacity: opacity3, x: x3 }}
                 className="absolute right-0 flex h-full w-full items-center justify-end px-6 sm:px-10 md:px-16 lg:px-32"
             >
-                <div className="max-w-xs sm:max-w-sm md:max-w-lg text-right">
+                <div className="max-w-xs text-right sm:max-w-sm md:max-w-lg">
+                    {/* Decorative line */}
+                    <div className="mb-6 ml-auto h-[2px] w-16 bg-gradient-to-l from-[#D4A574] to-transparent" />
                     <h2
-                        className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-semibold text-white"
+                        className="font-display text-3xl font-medium italic text-white sm:text-4xl md:text-5xl lg:text-6xl"
                         style={{
-                            textShadow: "0 4px 30px rgba(0,0,0,0.8), 0 2px 10px rgba(0,0,0,0.9)"
+                            textShadow: "0 4px 20px rgba(0,0,0,0.6), 0 8px 40px rgba(0,0,0,0.4)"
                         }}
                     >
                         Premium Ingredients.
                     </h2>
                     <p
-                        className="mt-3 sm:mt-4 text-base sm:text-lg md:text-xl text-neutral-200 leading-relaxed"
+                        className="font-body mt-4 text-base font-normal leading-relaxed text-white/90 sm:mt-5 sm:text-lg md:text-xl"
                         style={{
-                            textShadow: "0 2px 15px rgba(0,0,0,0.9)"
+                            textShadow: "0 2px 12px rgba(0,0,0,0.7)"
                         }}
                     >
                         Locally sourced mozzarella. Fresh basil.
@@ -92,22 +103,60 @@ export default function StoryOverlay() {
                 </div>
             </motion.div>
 
-            {/* Section 4: 90% - CTA */}
+            {/* Section 4: CTA */}
             <motion.div
                 style={{ opacity: opacity4, scale: scale4 }}
-                className="absolute inset-0 flex items-center justify-center text-center px-4"
+                className="absolute inset-0 flex items-center justify-center px-4 text-center"
             >
                 <div className="flex flex-col items-center">
+                    <p
+                        className="font-body mb-6 inline-block rounded-full border border-[#D4A574]/30 bg-black/40 px-5 py-2 text-sm font-medium tracking-[0.25em] text-[#D4A574] backdrop-blur-sm sm:px-6 sm:py-2.5 sm:text-base"
+                    >
+                        EXPERIENCE THE DIFFERENCE
+                    </p>
                     <h2
-                        className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold text-white"
+                        className="font-display text-4xl font-medium italic text-white sm:text-5xl md:text-7xl lg:text-8xl"
                         style={{
-                            textShadow: "0 4px 30px rgba(0,0,0,0.8), 0 2px 10px rgba(0,0,0,0.9)"
+                            textShadow: "0 4px 20px rgba(0,0,0,0.6), 0 8px 40px rgba(0,0,0,0.4)"
                         }}
                     >
-                        Taste the Difference.
+                        Taste the Craft.
                     </h2>
-                    <a href="https://fullcirclecafes.com/" target="_blank" rel="noopener noreferrer" className="pointer-events-auto mt-6 sm:mt-8 rounded-full bg-orange-600 px-6 sm:px-8 py-3 sm:py-4 text-base sm:text-lg font-semibold text-white shadow-lg shadow-orange-600/30 transition-all duration-300 hover:bg-orange-500 hover:scale-105 hover:shadow-xl hover:shadow-orange-500/40 active:scale-95">
-                        Order Now
+
+                    {/* Elegant CTA Button */}
+                    <a
+                        href="https://fullcirclecafes.com/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="pointer-events-auto group relative mt-10 overflow-hidden sm:mt-12"
+                    >
+                        {/* Button glow effect */}
+                        <span
+                            className="absolute inset-0 -z-10 rounded-full opacity-0 blur-xl transition-opacity duration-500 group-hover:opacity-70"
+                            style={{
+                                background: "linear-gradient(135deg, #C75D3A, #D4A574)",
+                            }}
+                        />
+
+                        {/* Main button */}
+                        <span
+                            className="font-body relative flex items-center gap-3 rounded-full border-2 border-white/20 bg-[#C75D3A] px-8 py-4 text-base font-semibold tracking-wide text-white transition-all duration-300 group-hover:border-[#D4A574]/50 group-hover:bg-[#A84D2E] sm:px-10 sm:py-5 sm:text-lg"
+                            style={{
+                                boxShadow: "0 4px 20px rgba(199, 93, 58, 0.4), 0 8px 40px rgba(0,0,0,0.3)",
+                            }}
+                        >
+                            Order Now
+                            {/* Arrow icon */}
+                            <svg
+                                className="h-5 w-5 transition-transform duration-300 group-hover:translate-x-1"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                                strokeWidth={2}
+                            >
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                            </svg>
+                        </span>
                     </a>
                 </div>
             </motion.div>

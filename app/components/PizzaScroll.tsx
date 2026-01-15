@@ -59,7 +59,7 @@ export default function PizzaScroll() {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
 
-            ctx.fillStyle = "#1a1a1a";
+            ctx.fillStyle = "#2D2420";
             ctx.fillRect(0, 0, canvas.width, canvas.height);
 
             // Use "cover" mode - fill screen, crop if needed
@@ -104,7 +104,7 @@ export default function PizzaScroll() {
         const img = images[index];
         if (!img) return;
 
-        ctx.fillStyle = "#1a1a1a";
+        ctx.fillStyle = "#2D2420";
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
         // Use "cover" mode - fill screen, crop if needed
@@ -128,7 +128,7 @@ export default function PizzaScroll() {
     });
 
     return (
-        <div className="fixed inset-0 z-0 h-screen w-full bg-[#1a1a1a]">
+        <div className="fixed inset-0 z-0 h-screen w-full bg-[#2D2420]">
             <canvas
                 ref={canvasRef}
                 className="absolute inset-0 block"
@@ -139,7 +139,7 @@ export default function PizzaScroll() {
                 <div
                     className="pointer-events-none absolute inset-0"
                     style={{
-                        background: "radial-gradient(ellipse 150% 150% at 50% 50%, transparent 50%, rgba(26, 26, 26, 0.7) 100%)"
+                        background: "radial-gradient(ellipse 150% 150% at 50% 50%, transparent 50%, rgba(45, 36, 32, 0.75) 100%)"
                     }}
                 />
             )}
