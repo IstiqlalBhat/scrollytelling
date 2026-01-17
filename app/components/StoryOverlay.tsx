@@ -1,22 +1,30 @@
 "use client";
 
-import { useScroll, useTransform, motion } from "framer-motion";
+import { useScroll, useTransform, motion, useSpring } from "framer-motion";
 
 export default function StoryOverlay() {
     const { scrollYProgress } = useScroll();
 
+    // Match physics of PizzaScroll for synchronization
+    const smoothProgress = useSpring(scrollYProgress, {
+        mass: 0.1,
+        stiffness: 50,
+        damping: 20,
+        restDelta: 0.001
+    });
+
     // Opacity transforms for each section
-    const opacity1 = useTransform(scrollYProgress, [0, 0.15, 0.25], [1, 1, 0]);
-    const y1 = useTransform(scrollYProgress, [0, 0.2], [0, -50]);
+    const opacity1 = useTransform(smoothProgress, [0, 0.15, 0.25], [1, 1, 0]);
+    const y1 = useTransform(smoothProgress, [0, 0.2], [0, -50]);
 
-    const opacity2 = useTransform(scrollYProgress, [0.2, 0.3, 0.4, 0.5], [0, 1, 1, 0]);
-    const x2 = useTransform(scrollYProgress, [0.2, 0.3], [-50, 0]);
+    const opacity2 = useTransform(smoothProgress, [0.2, 0.3, 0.4, 0.5], [0, 1, 1, 0]);
+    const x2 = useTransform(smoothProgress, [0.2, 0.3], [-50, 0]);
 
-    const opacity3 = useTransform(scrollYProgress, [0.5, 0.6, 0.7, 0.8], [0, 1, 1, 0]);
-    const x3 = useTransform(scrollYProgress, [0.5, 0.6], [50, 0]);
+    const opacity3 = useTransform(smoothProgress, [0.5, 0.6, 0.7, 0.8], [0, 1, 1, 0]);
+    const x3 = useTransform(smoothProgress, [0.5, 0.6], [50, 0]);
 
-    const opacity4 = useTransform(scrollYProgress, [0.8, 0.9, 1], [0, 1, 1]);
-    const scale4 = useTransform(scrollYProgress, [0.8, 1], [0.9, 1]);
+    const opacity4 = useTransform(smoothProgress, [0.8, 0.9, 1], [0, 1, 1]);
+    const scale4 = useTransform(smoothProgress, [0.8, 1], [0.9, 1]);
 
     return (
         <div className="pointer-events-none fixed inset-0 z-20 flex h-screen w-full flex-col justify-center px-4 sm:px-6 md:px-12 lg:px-20">

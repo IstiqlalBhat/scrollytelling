@@ -1,6 +1,6 @@
 "use client";
 
-import { useScroll, useTransform, useMotionValueEvent } from "framer-motion";
+import { useScroll, useTransform, useMotionValueEvent, useSpring } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 
 const FRAME_COUNT = 192;
@@ -10,7 +10,15 @@ export default function PizzaScroll() {
     const [images, setImages] = useState<HTMLImageElement[]>([]);
     const { scrollYProgress } = useScroll();
 
-    const currentIndex = useTransform(scrollYProgress, [0, 1], [0, FRAME_COUNT - 1]);
+    // "Buttery" smooth physics
+    const smoothProgress = useSpring(scrollYProgress, {
+        mass: 0.1,
+        stiffness: 50,
+        damping: 20,
+        restDelta: 0.001
+    });
+
+    const currentIndex = useTransform(smoothProgress, [0, 1], [0, FRAME_COUNT - 1]);
 
     // Load all images
     useEffect(() => {
