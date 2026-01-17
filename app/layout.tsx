@@ -21,6 +21,12 @@ const dmSans = DM_Sans({
 export const metadata: Metadata = {
   title: "Full Circle Cafe | Wood-Fired Perfection",
   description: "Experience the art of wood-fired pizza at Full Circle Cafe.",
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 1,
+    viewportFit: "cover",
+  },
 };
 
 export default function RootLayout({
