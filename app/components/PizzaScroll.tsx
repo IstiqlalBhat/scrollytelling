@@ -127,7 +127,7 @@ export default function PizzaScroll() {
     });
 
     return (
-        <div className="fixed inset-0 z-0 h-[100dvh] w-full bg-[#2D2420]">
+        <div className="fixed inset-0 z-0 w-full bg-[#2D2420]">
             <canvas
                 ref={canvasRef}
                 className="absolute inset-0 block"
