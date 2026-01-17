@@ -27,7 +27,7 @@ export default function StoryOverlay() {
     const scale4 = useTransform(smoothProgress, [0.8, 1], [0.9, 1]);
 
     return (
-        <div className="pointer-events-none fixed inset-0 z-20 flex h-screen w-full flex-col justify-center px-4 sm:px-6 md:px-12 lg:px-20">
+        <div className="pointer-events-none fixed inset-0 z-20 flex h-[100dvh] w-full flex-col justify-center px-4 sm:px-6 md:px-12 lg:px-20">
 
             {/* Section 1: Hero */}
             <motion.div
