@@ -20,6 +20,8 @@ export default function PizzaScroll() {
 
     const currentIndex = useTransform(smoothProgress, [0, 1], [0, FRAME_COUNT - 1]);
 
+    const lastRenderedIndex = useRef<number>(-1);
+
     // Load all images
     useEffect(() => {
         const imageArray: HTMLImageElement[] = new Array(FRAME_COUNT);
@@ -50,67 +52,17 @@ export default function PizzaScroll() {
 
     const imagesLoaded = images.length === FRAME_COUNT;
 
-    // Render a specific frame
-    useEffect(() => {
-        if (!imagesLoaded) return;
-
+    // Helper to draw a specific frame
+    const drawFrame = (index: number) => {
         const canvas = canvasRef.current;
-        if (!canvas) return;
-
-        const ctx = canvas.getContext("2d");
-        if (!ctx) return;
-
-        const render = (index: number) => {
-            const img = images[index];
-            if (!img) return;
-
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-
-            ctx.fillStyle = "#2D2420";
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-            // Use "cover" mode - fill screen, crop if needed
-            const canvasRatio = canvas.width / canvas.height;
-            const imgRatio = img.width / img.height;
-
-            let drawWidth, drawHeight;
-
-            if (canvasRatio > imgRatio) {
-                drawWidth = canvas.width;
-                drawHeight = img.height * (canvas.width / img.width);
-            } else {
-                drawHeight = canvas.height;
-                drawWidth = img.width * (canvas.height / img.height);
-            }
-
-            const offsetX = (canvas.width - drawWidth) / 2;
-            const offsetY = (canvas.height - drawHeight) / 2;
-
-            ctx.drawImage(img, offsetX, offsetY, drawWidth, drawHeight);
-        };
-
-        render(0);
-
-        const handleResize = () => render(Math.round(currentIndex.get()));
-        window.addEventListener("resize", handleResize);
-
-        return () => window.removeEventListener("resize", handleResize);
-    }, [imagesLoaded, images]);
-
-    // Update on scroll
-    useMotionValueEvent(currentIndex, "change", (latest) => {
-        if (!imagesLoaded) return;
-
-        const canvas = canvasRef.current;
-        if (!canvas) return;
-
-        const ctx = canvas.getContext("2d");
-        if (!ctx) return;
-
-        const index = Math.round(latest);
         const img = images[index];
-        if (!img) return;
+        if (!canvas || !img) return;
+
+        const ctx = canvas.getContext("2d");
+        if (!ctx) return;
+
+        // Optimization: Don't set width/height here! 
+        // It clears the canvas and is expensive.
 
         ctx.fillStyle = "#2D2420";
         ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -133,6 +85,45 @@ export default function PizzaScroll() {
         const offsetY = (canvas.height - drawHeight) / 2;
 
         ctx.drawImage(img, offsetX, offsetY, drawWidth, drawHeight);
+    };
+
+    // Handle Resize separately
+    useEffect(() => {
+        if (!imagesLoaded) return;
+        const canvas = canvasRef.current;
+        if (!canvas) return;
+
+        const updateSize = () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            // Force redraw after resize
+            const index = Math.round(currentIndex.get());
+            drawFrame(index);
+        };
+
+        updateSize();
+        window.addEventListener("resize", updateSize);
+        return () => window.removeEventListener("resize", updateSize);
+    }, [imagesLoaded, images]); // Re-run when images verify loaded
+
+    // Initial draw
+    useEffect(() => {
+        if (imagesLoaded) {
+            drawFrame(0);
+        }
+    }, [imagesLoaded]);
+
+    // Update on scroll with optimization
+    useMotionValueEvent(currentIndex, "change", (latest) => {
+        if (!imagesLoaded) return;
+
+        const index = Math.round(latest);
+
+        // Optimization: Only draw if frame changed
+        if (index === lastRenderedIndex.current) return;
+
+        drawFrame(index);
+        lastRenderedIndex.current = index;
     });
 
     return (
